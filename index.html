@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Menu responsive</title>
+	<meta charest="UTF-8" />
+	<link rel="stylesheet" href="style.css" />
+</head>
+<script>
+	function start(e){
+		e.dataTransfer.effectAllowed="move"; // copy
+		e.dataTransfer.setData("text",e.target.getAttribute("id"));
+	}
+	function over(e){
+		e.currentTarget.className="class2";
+		return false;
+	}
+	function drop(e){
+		ob=e.dataTransfer.getData("text");
+		e.currentTarget.appendChild(document.getElementById(ob)); 
+		e.currentTarget.className= "class1"; 
+		e.stopPropagation(); 
+		return false;
+	}
+</script>
+<body>
+
+	<div id="haut" class="class1" onDragStart="start(event)" onDragOver="return over(event)" onDrop="return drop(event)" onDragLeave= "leave(event)" >
+		<img src="images/image1.png" id="1" draggable="true" />
+		<img src="images/image2.png" id="2" draggable="true" />
+		<img src="images/image3.png" id="3" draggable="true" />
+		<img src="images/image4.png" id="4" draggable="true" />
+	</div>
+
+	<div id="bas" class="class1" onDragStart="start(event)" onDragOver="return over(event)" onDrop="return drop(event)" onDragLeave="leave(event)">
+		
+	</div>
+	
+</body>
